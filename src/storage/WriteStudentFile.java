@@ -15,11 +15,11 @@ public class WriteStudentFile {
     // CSV file header
     private static final String FILE_HEADER = "id,name,age";
 
-    public static void main(String[] args) {
+//    tach phuong thuc ra:
+//    ghi file: co tham so danh sach student
+
+    public static void writeStudents(List<Student> students) {
         String fileName= "data/students.csv";
-        List<Student> students = new ArrayList<>();
-        students.add(new Student(1, "Long", 24));
-        students.add(new Student(2, "Ky", 24));
         try {
             FileWriter fileWriter = new FileWriter(fileName);
             fileWriter.append(FILE_HEADER);
@@ -36,5 +36,4 @@ public class WriteStudentFile {
             throw new RuntimeException(e);
         }
     }
-
 }
