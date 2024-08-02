@@ -11,13 +11,25 @@ import java.util.List;
 public class CsvReaderExample {
     private static final String COMMA_DELIMITER = ","; // Split by comma
 
-    public static void main(String[] args) {
+//    public static void main(String[] args) {
+//
+//        List<Country> countries = readFile("data/countries.csv");
+//        System.out.println(countries);
+//    }
+    private static CsvReaderExample instance;
 
-        List<Country> countries = readFile("data/countries.csv");
-        System.out.println(countries);
+    private CsvReaderExample() {
     }
 
-    private static List<Country> readFile(String fileName) {
+    public static CsvReaderExample getInstance() {
+        if (instance == null) {
+            instance = new CsvReaderExample();
+//            System.out.println(instance);
+        }
+        return instance;
+    }
+
+    public List<Country> readFile(String fileName) {
         BufferedReader br = null;
         try {
             String line;
@@ -43,7 +55,7 @@ public class CsvReaderExample {
         return null;
     }
 
-    private static List<Country> getCountries(List<String> strings){
+    private List<Country> getCountries(List<String> strings){
         strings.remove(0);
         List<Country> countries = new ArrayList<>();
         for (String string : strings) {
